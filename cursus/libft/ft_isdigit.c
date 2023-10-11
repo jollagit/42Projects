@@ -6,15 +6,13 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:06:31 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/09 14:07:14 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/11 17:13:11 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int     ft_digit(int i)
+int	ft_isdigit(int i)
 {
-    if (i >= '0' && i <= '9')
-        return (1);
-    return (0);
+	if (i >= '0' && i <= '9')
+		return (1);
+	return (0);
 }

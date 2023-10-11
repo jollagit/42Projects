@@ -6,15 +6,13 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:26:42 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/09 16:38:52 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/11 17:28:28 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int     toupper(int i)
+int	ft_toupper(int i)
 {
-    if (i >= 97 && i <= 122)
-        return (i - 32);
-    return (0);
+	if (i >= 97 && i <= 122)
+		return (i - 32);
+	return (0);
 }

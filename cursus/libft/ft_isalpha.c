@@ -6,16 +6,13 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:05:41 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/09 14:07:14 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/11 17:11:55 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int     ft_isalpha(int i)
+int	ft_isalpha(int i)
 {
-    if ((i >= 'a' && i <= 'z') || (i >= 'A' && i <= 'Z'))
-        return (1);
-    return (0);
+	if ((i >= 'a' && i <= 'z') || (i >= 'A' && i <= 'Z'))
+		return (1);
+	return (0);
 }
-

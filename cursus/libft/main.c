@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 14:06:20 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/11 17:12:37 by gvigano          ###   ########.fr       */
+/*   Created: 2023/10/10 16:46:36 by gvigano           #+#    #+#             */
+/*   Updated: 2023/10/11 17:33:34 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int i)
+#include<unistd.h>
+#include<stdlib.h>
+#include<stdio.h>
+#include "libft.h"
+
+int	main(int argc, char *argv[])
 {
-	if (i >= 0 && i <= 127)
-		return (1);
-	return (0);
+	char	*c;
+
+	if (argc > 0)
+	{
+		printf("mio: %s \n", ft_strchr("Ciao mi chiamo chiara", ' '));
+		printf("originale: %s", strchr("Ciao mi chiamo chiara", ' '));
+	}
+	argv[2] = "aaaaaa";
 }
