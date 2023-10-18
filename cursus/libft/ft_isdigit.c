@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:06:31 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/11 17:13:11 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/18 13:21:33 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isdigit(int i)
 {
 	if (i >= '0' && i <= '9')
-		return (1);
+		return (2048);
 	return (0);
 }

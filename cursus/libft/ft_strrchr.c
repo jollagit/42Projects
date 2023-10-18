@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:47:09 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/11 17:26:25 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/18 15:17:27 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ char	*ft_strrchr(const char *s, int c)
 			return ((char *) s);
 		s--;
 	}
+	if (*s == c)
+		return ((char *) s);
 	return (NULL);
 }
