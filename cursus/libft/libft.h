@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:32:32 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/18 16:50:49 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2023/10/19 18:53:43 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <ctype.h>
 # include <unistd.h>
 
+char	*ft_itoa(int n);
 int		ft_isalnum(int i);
 int		ft_isalpha(int i);
 int		ft_isascii(int i);
@@ -31,8 +32,8 @@ char	*ft_strdup(const char *s);
 void	ft_bzero(void *s, size_t n);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
-void	*ft_memset(void *s, int c, size_t n);
 char	**ft_split(const char *s, char c);
+void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memchr(const void *s, int c, size_t n);
 char	*ft_strjoin(const char *s1, const char *s2);

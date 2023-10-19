@@ -1,42 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 14:35:25 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/19 10:22:21 by gvigano          ###   ########.fr       */
+/*   Created: 2023/10/19 17:52:59 by gvigano           #+#    #+#             */
+/*   Updated: 2023/10/19 18:52:32 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+static size_t	ft_digits(int n)
+{
+	size_t	i;
+
+	i = 0;
+	if (n < 0)
+	{
+		n *= -1;
+		i++;
+	}
+	while (n != 0)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_itoa(int n)
 {
 	char	*ptr;
-	size_t	len;
-	size_t	start;
-	size_t	end;
+	size_t	digits;
 
-	start = 0;
-	len = ft_strlen(s1);
-	end = len;
-	while (start < len && ft_strchr(set, s1[start]) != NULL)
-		start++;
-	while (ft_strchr(set, s1[end]) != NULL)
-		end--;
-	len = end - start + 1;
-	ptr = (char *) malloc ((len + 1) * sizeof(char));
-	if (ptr == NULL)
+	digits = ft_digits(n);
+	ptr = (char *) malloc (sizeof (char) * (digits + 1));
+	if (!ptr)
 		return (NULL);
-	while (len > 0)
+	if (n < -2147483647)
 	{
-		*ptr = s1[start];
-		ptr++;
-		start++;
-		len--;
+		ptr = "-2147483647";
+		return (ptr);
 	}
-	*ptr = '\0';
+	if (n < 0)
+	{
+		*ptr = '-';
+		n *= -1;
+	}
+	*(ptr + digits) = '\0';
+	while (n != 0)
+	{
+		digits--;
+		*(ptr + digits) = n % 10 + '0';
+		n /= 10;
+	}
 	return (ptr);
 }

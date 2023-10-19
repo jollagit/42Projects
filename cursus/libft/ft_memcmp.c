@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:52:04 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/18 17:18:44 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2023/10/19 10:22:49 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	while (--n != 0)
 	{
 		if (*ptr_s1 != *ptr_s2)
-			break;
+			break ;
 		ptr_s1++;
 		ptr_s2++;
 	}
