@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:46:36 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/18 17:44:18 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2023/10/20 15:42:55 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(void)
+int	main(int argc, char *argv[])
 {
-	ft_strdup("ciao mi chiama abuela");
+	if (argc > 0)
+	{
+		ft_putnbr_fd(atoi(argv[1]), atoi(argv[2]));
+	}
 }

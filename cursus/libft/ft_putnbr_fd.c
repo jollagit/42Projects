@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 14:18:12 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/20 16:17:05 by gvigano          ###   ########.fr       */
+/*   Created: 2023/10/20 15:32:01 by gvigano           #+#    #+#             */
+/*   Updated: 2023/10/20 15:50:05 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
+	long int	nb;
+	char		c;
 
-	i = 0;
-	if (size == 0)
-		return (0);
-	while (src[i] && i < size)
+	nb = n;
+	if (nb < 0)
 	{
-		dest[i] = src[i];
-		i++;
+		write(1, "-", 1);
+		nb *= -1;
 	}
-	dest[i] = '\0';
-	return (i);
+	if (nb > 9)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putnbr_fd(nb % 10, fd);
+	}
+	if (nb <= 9)
+		c = nb + '0';
+	write(fd, &c, 1);
 }

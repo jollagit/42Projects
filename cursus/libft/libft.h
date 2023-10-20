@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:32:32 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/19 18:53:43 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/20 15:41:45 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ int		ft_toupper(int i);
 int		ft_atoi(const char *str);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
+void	ft_putnbr_fd(int n, int fd);
 void	ft_bzero(void *s, size_t n);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putendl_fd(char *s, int fd);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	**ft_split(const char *s, char c);
@@ -44,6 +48,8 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strncmp(const char *s1, const char *s2, size_t n);
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strnstr(const char *big, const char *lit, size_t len);
 
