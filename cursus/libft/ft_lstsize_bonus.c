@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 10:43:03 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/23 10:43:09 by gvigano          ###   ########.fr       */
+/*   Created: 2023/10/23 11:16:17 by gvigano           #+#    #+#             */
+/*   Updated: 2023/10/23 11:22:34 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	base;
-	size_t	sign;
+	int		i;
+	t_list	*element;
 
-	sign = 1;
-	base = 0;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '+' || *str == '-')
+	i = 0;
+	element = lst;
+	while (element != NULL)
 	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
+		i++;
+		element = element->next;
 	}
-	while (*str >= '0' && *str <= '9')
-	{
-		base = base * 10 + (*str - '0');
-		str++;
-	}
-	return (base * sign);
+	return (i);
 }
