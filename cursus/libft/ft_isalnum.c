@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:06:05 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/20 16:15:44 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/24 19:28:23 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isalnum(int i)
 {
-	if ((i >= 0 && i <= 9) || (i >= 'a' && i <= 'z') || (i >= 'A' && i <= 'Z'))
+	if ((i >= '0' && i <= '9') || (i >= 'a' && i <= 'z')
+		|| (i >= 'A' && i <= 'Z'))
 		return (8);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:36:32 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/11 17:27:35 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/25 19:00:28 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@ int	ft_tolower(int i)
 {
 	if (i >= 65 && i <= 90)
 		return (i + 32);
-	return (0);
+	else
+		return (i);
 }

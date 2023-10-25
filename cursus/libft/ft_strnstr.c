@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:18:34 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/11 17:24:15 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/25 19:53:25 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ char	*ft_strnstr(const char *big, const char *lit, size_t len)
 {
 	size_t	t;
 
-	if (*lit == '\0' || big == lit)
+	if (!big || !lit)
+		return (NULL);
+	if (*lit == '\0' || lit == NULL)
 		return ((char *) big);
 	while (*big != '\0' && len > 0)
 	{
