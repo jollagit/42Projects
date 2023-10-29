@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: menny <menny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:47:17 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/20 16:16:59 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/29 15:36:28 by menny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,37 @@
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
+	size_t	dest_len;
+	size_t	len_tot;
+	size_t	src_len;
+	size_t	t;
+
+	if (!dest || !src)
+		return (0);
+	dest_len = ft_strlen(dest);
+	src_len = ft_strlen(src);
+	if (size < dest_len)
+		len_tot = size + src_len;
+	else
+		len_tot = dest_len + src_len;
+	t = dest_len;
+	while (*src != '\0' &&  (t + 1) < size)
+	{
+		dest[t] = *src;
+		src++;
+		t++;
+	}
+	dest[t] = '\0';
+	return (len_tot);
+}
+
+/*size_t	ft_strlcat(char *dest, const char *src, size_t size)
+{
 	size_t	t;
 	char	*str;
 
 	t = ft_strlen(dest);
-	if (size == 0)
+	if (size == 0 || !dest || !src)
 		return (0);
 	if (size < t)
 	{
@@ -37,6 +63,5 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 		src++;
 		t++;
 	}
-	size = t;
-	return (size);
-}
+	return (t);
+}*/

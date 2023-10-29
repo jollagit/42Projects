@@ -3,28 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: menny <menny@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:52:59 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/28 19:41:33 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/29 13:02:49 by menny            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_digits(int n)
+static size_t	ft_digits(long int num)
 {
 	size_t	i;
 
 	i = 0;
-	if (n < 0)
-	{
-		n *= -1;
+	if (num == 0)
 		i++;
-	}
-	while (n != 0)
+	if (num < 0)
+		i++;
+	while (num != 0)
 	{
-		n /= 10;
+		num /= 10;
 		i++;
 	}
 	return (i);
@@ -34,28 +33,26 @@ char	*ft_itoa(int n)
 {
 	char		*ptr;
 	size_t		digits;
+	long int	num;
 
-	if (n < -2147483647)
-	{
-		ptr = (char *) malloc (sizeof(char) * 12);
-		ptr = "-2147483648";
-		return (ptr);
-	}
-	digits = ft_digits(n);
+	num = (long int)n;
+	digits = ft_digits(num);
 	ptr = (char *) malloc (sizeof (char) * (digits + 1));
 	if (!ptr)
 		return (NULL);
-	if (n < 0)
+	if (num == 0)
+		ptr[0] = '0';
+	if (num < 0)
 	{
 		*ptr = '-';
-		n *= -1;
+		num *= -1;
 	}
 	*(ptr + digits) = '\0';
-	while (n != 0)
+	while (num != 0)
 	{
 		digits--;
-		*(ptr + digits) = n % 10 + '0';
-		n /= 10;
+		*(ptr + digits) = num % 10 + '0';
+		num /= 10;
 	}
 	return (ptr);
 }
