@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: menny <menny@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:47:17 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/29 15:36:28 by menny            ###   ########.fr       */
+/*   Updated: 2023/10/30 19:08:57 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	else
 		len_tot = dest_len + src_len;
 	t = dest_len;
-	while (*src != '\0' &&  (t + 1) < size)
+	while (*src != '\0' && (t + 1) < size)
 	{
 		dest[t] = *src;
 		src++;
@@ -37,31 +37,27 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	dest[t] = '\0';
 	return (len_tot);
 }
-
-/*size_t	ft_strlcat(char *dest, const char *src, size_t size)
+/*int	main(int argc, char *argv[])
 {
-	size_t	t;
-	char	*str;
-
-	t = ft_strlen(dest);
-	if (size == 0 || !dest || !src)
-		return (0);
-	if (size < t)
+	char	str[50];
+	size_t	len;
+	
+	if (argc > 0)
 	{
-		t = 0;
-		while (t < size)
-		{
-			dest[t] = *str;
-			str++;
-			t++;
-		}
-		return (t);
+		len = ft_strlen(argv[1]);
+		ft_strlcpy(str, argv[1], (len + 1));
+		ft_strlcat(str, argv[2], ft_atoi(argv[3]));
+		printf("la mia stringa finale: %s \n", str);
 	}
-	while (*src && t < size)
-	{
-		dest[t] = *src;
-		src++;
-		t++;
-	}
-	return (t);
+	return (0);
 }*/
+
+/*DESCRIPTION: strlcat()concatenate strings.
+The strlcat() function appends the NUL-terminated
+string src to the end of dst.  It will append at
+most size - strlen(dst) - 1 bytes, NUL-terminating
+the result.
+RETURN VALUES: strlcat() functions return the
+total length of the string they tried to create.
+For strlcat() that means the initiallength
+of dst plus the length of src.*/

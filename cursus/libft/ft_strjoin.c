@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:19:27 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/28 16:32:50 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/30 12:02:31 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	if (!s1 || !s2)
 		return ("");
 	ptr = (char *) malloc (sizeof(char)
-		* (ft_strlen(s1) + ft_strlen(s2) + 1));
+			* (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!ptr)
 		return (NULL);
 	i = 0;

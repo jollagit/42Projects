@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:46:36 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/21 11:35:49 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2023/10/30 19:44:31 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	main(int argc, char *argv[])
 {
 	if (argc > 0)
 	{
-		printf("la mia %d \n", ft_atoi(argv[1]));
-		printf("quella originale %d :", atoi(argv[1]));
+		printf("il mio carattere nuovo: %d", ft_toupper(argv[1][0]));
+		printf("\n l'originale: %d", toupper(argv[1][0]));
 	}
+	return (0);
 }
+	
