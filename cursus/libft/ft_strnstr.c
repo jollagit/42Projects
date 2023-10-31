@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:18:34 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/27 16:21:11 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/31 18:05:05 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,9 @@ char	*ft_strnstr(const char *big, const char *lit, size_t len)
 }
 /*int	main (int argc, char *argv[])
 {
-	char	*result;
-	
-	if (argv != 4)
+	if (argc != 4)
 		return (0);
-	result = ft_strnstr(argv[1], argv[2], argv[3]);
-	if (result != NULL)
-		printf("il risultato della ricerca e' un successo");	
-	else	
-	printf("il risultato della ricerca e' un fallimento");
+	printf("il mio risultato: %s",ft_strnstr(argv[1], argv[2], ft_atoi(argv[3])));
 	return (0);
 }*/	
 

@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:36:06 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/30 17:59:09 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/31 15:23:16 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		ft_memmove(str, argv[2], ft_atoi(argv[3]));
 		printf("mia: %s", str);
 		ft_memcpy(ptr, argv[1], (len + 1));
-		ft_memmove(ptr, argv[2], ft_atoi(argv[3]));
+		memmove(ptr, argv[2], ft_atoi(argv[3]));
 		printf("\n originale: %s", ptr);
 	}
 	return (0);

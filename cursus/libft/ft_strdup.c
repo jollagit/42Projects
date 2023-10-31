@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 18:29:57 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/27 16:06:27 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/31 18:18:25 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,9 @@ char	*ft_strdup(const char *s)
 }
 /*int	main (int argc, char *argv[])
 {
-	char	*str;
-
 	if (argc != 2)
 		return (0);
-	str = ft_strdup(argv[1]);
-	printf("la stringa duplicata: %s", str);
+	printf("la stringa duplicata: %s", ft_strdup(argv[1]));
 }*/
 
 /*The  strdup() function returns a pointer to a new

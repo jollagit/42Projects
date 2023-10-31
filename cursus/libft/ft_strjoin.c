@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:19:27 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/30 12:02:31 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/31 18:24:02 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ char	*ft_strjoin(const char *s1, const char *s2)
 }
 /*int	main(int argc, char *argv[])
 {
-	char	*str;
 	if (argc != 3)
 		return (0);
-	str = ft_strjoin(argv[1], argv[2]);
-	printf("la stringa congiunta risulta %s", str);
+	printf("la stringa congiunta risulta %s", ft_strjoin(argv[1], argv[2]));
 	return (0);
 }*/
 /*Allocates (with malloc(3)) and returns a new

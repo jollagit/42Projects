@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:25:44 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/30 18:01:04 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/31 15:23:24 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		ft_memcpy(str, argv[2], ft_atoi(argv[3]));
 		printf("mia: %s", str);
 		ft_memcpy(ptr, argv[1], (len + 1));
-		ft_memcpy(ptr, argv[2], ft_atoi(argv[3]));
+		memcpy(ptr, argv[2], ft_atoi(argv[3]));
 		printf("\n originale: %s", ptr);
 	}
 	return (0);

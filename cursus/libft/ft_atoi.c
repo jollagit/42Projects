@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:43:03 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/27 15:22:25 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/10/31 18:09:42 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ int	ft_atoi(const char *str)
 {
 	if (argc != 2)
 		return (0);
-	printf("il carattere diventa: %s", ft_atoi(argv[1]));
+	printf("il carattere diventa: %d", ft_atoi(argv[1]));
+	printf("\n con l'originale: %d", atoi(argv[1]));
+	return (0);
 }*/
 /*DESCRIPTION: The atoi() function converts the initial
-portion of the string pointed to by nptr to int.*/
+portion of the string pointed to by nptr to int.
+RETURN VALUE: The converted value.*/
