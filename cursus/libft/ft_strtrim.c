@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:35:25 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/28 17:57:14 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/11/01 11:22:37 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 }
 /*int	main(int argc, char *argv[])
 {
-	char	*ptr;
-	
 	if (argc != 3)
 		return (0);
-	ptr = ft_strtrim(argv[1], argv[2]);
-	printf("la stringa pulita e':", ptr);
+	printf("la stringa pulita e': %s", ft_strtrim(argv[1], argv[2]));
 	return (0);
 }*/
 /*Allocates (with malloc(3)) and returns a copy of

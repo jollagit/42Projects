@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:16:56 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/31 18:22:02 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/11/01 11:18:46 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	if (argc != 4)
 		return (0);
-	printf("il risultato e': %s", ft_substr(argv[1], ft_atoi(argv[2]), ft_atoi(argv[3])));
+	printf("il risultato e': %s", ft_substr(argv[1], 
+	ft_atoi(argv[2]), ft_atoi(argv[3])));
 	return (0);
 }*/
 

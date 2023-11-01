@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: menny <menny@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:18:05 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/29 13:17:34 by menny            ###   ########.fr       */
+/*   Updated: 2023/11/01 13:12:47 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,17 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
+/*int	main(int argc, char *argv[])
+{
+	int	fd;
+	
+	if (argc != 3)
+		return (0);
+	fd = ft_atoi(argv[2]);
+	ft_putstr_fd(argv[1], fd);
+	return (0);
+}*/
+
+/*Description: Outputs the string ’s’ to the given file
+descriptor.
+Return value: None*/

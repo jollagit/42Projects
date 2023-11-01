@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:52:04 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/31 17:45:09 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/11/01 11:19:07 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	if (argc > 0)
 	{
 		
-		printf("mia: %d", ft_memcmp(argv[1], argv[2], (size_t)ft_atoi(argv[3])));
-		printf("\n originale: %d", memcmp(argv[1], argv[2], (size_t)ft_atoi(argv[3])));
+		printf("mia: %d", ft_memcmp(argv[1], argv[2],
+		 (size_t)ft_atoi(argv[3])));
+		printf("\n originale: %d", memcmp(argv[1],
+		 argv[2], (size_t)ft_atoi(argv[3])));
 	}
 	return (0);
 }*/

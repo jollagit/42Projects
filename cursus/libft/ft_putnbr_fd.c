@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: menny <menny@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:32:01 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/29 13:16:51 by menny            ###   ########.fr       */
+/*   Updated: 2023/11/01 13:17:38 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,17 @@ void	ft_putnbr_fd(int n, int fd)
 		write(fd, &c, 1);
 	}
 }
+/*int	main(int argc, char *argv[])
+{
+	int	fd;
+	
+	if (argc != 3)
+		return (0);
+	fd = ft_atoi(argv[2]);
+	ft_putnbr_fd(ft_atoi(argv[1]), fd);
+	return (0);
+}*/
+
+/*Description: Outputs the integer ’n’ to the given file
+descriptor.
+Return value: None*/

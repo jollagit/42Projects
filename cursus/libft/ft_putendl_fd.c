@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: menny <menny@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:20:36 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/29 13:11:36 by menny            ###   ########.fr       */
+/*   Updated: 2023/11/01 13:15:28 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,17 @@ void	ft_putendl_fd(char *s, int fd)
 	}
 	write(fd, "\n", 1);
 }
+/*int	main(int argc, char *argv[])
+{
+	int	fd;
+	
+	if (argc != 3)
+		return (0);
+	fd = ft_atoi(argv[2]);
+	ft_putendl_fd(argv[1], fd);
+	return (0);
+}*/
+
+/*Description: Outputs the string ’s’ to the given file descriptor
+followed by a newline.
+Return value: None*/

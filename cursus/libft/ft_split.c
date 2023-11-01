@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: menny <menny@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:05:40 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/29 13:06:39 by menny            ###   ########.fr       */
+/*   Updated: 2023/11/01 12:53:45 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,24 @@ char	**ft_split(const char *s, char c)
 	*ptr = NULL;
 	return (mat);
 }
+/*int	main(int argc, char *argv[])
+{
+	char	**str;
+	size_t	i;
+	
+	if (argc != 3)
+		return (0);
+	str = ft_split(argv[1], argv[2][0]);
+	printf("gli elementi sono:\n");
+	i = 0;
+	while (str[i])
+	{
+		printf("%s \n", str[i]);
+		i++;
+	}
+	return (0);
+}*/
+
 /*Allocates (with malloc(3)) and returns an array
 of strings obtained by splitting ’s’ using the
 character ’c’ as a delimiter. The array must end

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: menny <menny@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 17:52:59 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/29 13:02:49 by menny            ###   ########.fr       */
+/*   Updated: 2023/11/01 11:30:00 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,3 +56,16 @@ char	*ft_itoa(int n)
 	}
 	return (ptr);
 }
+/*int	main(int argc, char *argv[])
+{
+	if (argc != 2)
+		return (0);
+	printf("il numero diventa: %s", ft_itoa(ft_atoi(argv[1])));
+	return (0);
+}*/
+
+/*Allocates (with malloc(3)) and returns a string
+representing the integer received as an argument.
+Negative numbers must be handled.
+Return value: The string representing the integer.
+NULL if the allocation fails.*/
