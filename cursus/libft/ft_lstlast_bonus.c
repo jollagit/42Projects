@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 11:23:45 by gvigano           #+#    #+#             */
-/*   Updated: 2023/11/01 16:28:07 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/11/03 14:19:11 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_list	*ft_lstlast(t_list *lst)
 	t_list	*current = list;
 	while(current != NULL)
 	{
-		printf("%p ", current->content);
+		printf("%s ", (char *)(current->content));
 		current = current->next;
 	}
 }
@@ -42,7 +42,7 @@ int	main(int argc, char *argv[])
 	newel = ft_lstnew(argv[2]);
 	ft_lstadd_back(&lista, newel);
 	ft_printlist(lista);
-	printf("\n l'ultimo elemento: %p", newel->content);
+	printf("\n l'ultimo elemento: %s", (char *)(newel->content));
 	return (0);
 }*/
 

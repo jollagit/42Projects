@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 11:27:10 by gvigano           #+#    #+#             */
-/*   Updated: 2023/11/01 16:45:19 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/11/03 14:32:57 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	t_list	*current = list;
 	while(current != NULL)
 	{
-		printf("%p ", current->content);
+		printf("\n %s", (char *)(current->content));
 		current = current->next;
 	}
 }
@@ -49,7 +49,7 @@ int	main(int argc, char *argv[])
 	ft_lstadd_front(&lista, newel);
 	newel = ft_lstnew(argv[2]);
 	ft_lstadd_back(&lista, newel);
-	printf("lista:");
+	printf("lista: ");
 	ft_printlist(lista);
 	return (0);
 }*/
