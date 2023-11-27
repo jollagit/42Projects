@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
+/*   ft_get_next_line2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 17:15:54 by gvigano           #+#    #+#             */
-/*   Updated: 2023/11/27 17:15:56 by gvigano          ###   ########.fr       */
+/*   Created: 2023/11/27 17:15:44 by gvigano           #+#    #+#             */
+/*   Updated: 2023/11/27 17:55:24 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,58 @@
 
 char	*ft_get_next_line(int fd)
 {
-	char	*line;
+	static char	*line;
+	char		*str;
 	int			control;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = (char *) malloc (BUFFER_SIZE + 1);
+	str = (char *) malloc (BUFFER_SIZE + 1);
 	if (line == NULL)
 		return (NULL);
-	control = ft_read_line(fd, line);
+	control = ft_read_line(fd, str);
 	if (control <= 0)
 	{
 		free(line);
 		return (NULL);
 	}
+	line = ft_extract_line(str);
 	return (line);
 }
 
-int	ft_read_line(int fd, char *line)
+char	ft_read_line(int fd, char *str)
 {
 	int		current;
-	int		char_read;
 
-	current = 0;
-	char_read = 0;
-	while (current < BUFFER_SIZE)
+	current = 1;
+	while (str[current] != '\n' && current != 0)
 	{
-		char_read = read(fd, line + current, 1);
-		if (char_read == -1)//error
+		current = read(fd, str, BUFFER_SIZE);
+		if (current == -1)//error
 			return (-1);
-		else if (char_read == 0)//end of file
+		else if (current == 0)//end of file
 		{
-			line[current] = '\0';
+			str[current] = '\0';
 			return (0);
-		}
-		else if (line[current] == '\n')//end of line
-		{
-			line [current + 1] = '\0';
-			return (current);
 		}
 		current++;
 	}
-	line[BUFFER_SIZE] = '\0';
+	str[BUFFER_SIZE] = '\0';
 	return (BUFFER_SIZE);
+}
+
+char	*ft_extract_line(char *str, int current)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			break ;
+		i++;
+	}
+	return(str);
 }
 
 int	main (int argc, char *argv[])
@@ -81,3 +90,9 @@ int	main (int argc, char *argv[])
 	close (fd);
 	return (0);
 }
+
+/*else if (line[current] == '\n')//end of line
+		{
+			line [current + 1] = '\0';
+			return (current);
+		}*/
