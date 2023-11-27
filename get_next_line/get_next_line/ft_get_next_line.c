@@ -1,18 +1,9 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-
-# ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
-# endif
-
-int	ft_read_line(int fd, char *line);
+#include "get_next_line.h"
 
 char	*ft_get_next_line(int fd)
 {
 	char	*line;
-	int		control;
+	int			control;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -26,14 +17,6 @@ char	*ft_get_next_line(int fd)
 		return (NULL);
 	}
 	return (line);
-}
-
-// controllo se ho raggiunto la fine della riga su cui sto lavorando
-int	ft_end_line(char element)
-{
-	if (element == '\n')
-			return (1);
-	return (0);
 }
 
 int	ft_read_line(int fd, char *line)
@@ -53,21 +36,27 @@ int	ft_read_line(int fd, char *line)
 	return (current);
 }
 
-int	main (int argc, char *argv[])
+int	main ()
 {
-	int	fd;
+	//int	fd;
 	char *line;
 
-	if (argc != 2)
-		return (0);
-	fd = open(argv[1], O_RDONLY);
-	line = ft_get_next_line(fd);
+	//if (argc != 2)
+		//return (0);
+	//fd = open(1, O_RDONLY);
+	write (1, "HEllo", 5);
+	printf("\nla lettura è: ");
+	line = ft_get_next_line(1);
 	if (line != NULL)
 	{
-		printf("\n%s", line);
-		line = ft_get_next_line(fd);
-		printf("\n%s", line);
+		printf("%s\n", line);
+		//line = ft_get_next_line(fd);
+		//printf("%s\n", line);
+		//line = ft_get_next_line(fd);
+		//printf("%s\n", line);
+		//line = ft_get_next_line(fd);
+		//printf("%s\n", line);
 	}
-	close (fd);
+	//close (fd);
 	return (0);
 }
