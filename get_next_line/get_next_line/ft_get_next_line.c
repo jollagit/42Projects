@@ -1,83 +1,97 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 17:15:54 by gvigano           #+#    #+#             */
-/*   Updated: 2023/11/27 17:15:56 by gvigano          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
 
 char	*ft_get_next_line(int fd)
 {
-	char	*line;
-	int			control;
+	static char	*line;
+	char		*src;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = (char *) malloc (BUFFER_SIZE + 1);
-	if (line == NULL)
+	src = ft_read_buffer(fd, src);
+	if (!src)
 		return (NULL);
-	control = ft_read_line(fd, line);
-	if (control <= 0)
-	{
-		free(line);
-		return (NULL);
-	}
+	line = ft_extract_line(src);
+	src = ft_rest_readed(src);
 	return (line);
 }
 
-int	ft_read_line(int fd, char *line)
+// leggo una stringa di buffer_size caratteri dal file
+static char	*ft_read_buffer(int fd, char *src)
 {
+	char	*tmp;
 	int		current;
-	int		char_read;
 
-	current = 0;
-	char_read = 0;
-	while (current < BUFFER_SIZE)
+	tmp = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!tmp)
+		return (NULL);
+	current = 1;
+	while (tmp[current] != '\n' && current != 0)
 	{
-		char_read = read(fd, line + current, 1);
-		if (char_read == -1)//error
-			return (-1);
-		else if (char_read == 0)//end of file
+		current = read(fd, tmp, BUFFER_SIZE);
+		if (current == -1)
 		{
-			line[current] = '\0';
-			return (0);
+			free(tmp);
+			return (NULL);
 		}
-		else if (line[current] == '\n')//end of line
-		{
-			line [current + 1] = '\0';
-			return (current);
-		}
-		current++;
+		tmp[current] = '\0';
+		src = ft_strjoin(src, tmp);
 	}
-	line[BUFFER_SIZE] = '\0';
-	return (BUFFER_SIZE);
+	free(tmp);
+	return (src);
 }
 
-int	main (int argc, char *argv[])
+// estraggo dalla stringa letta la riga che trovo
+static char	*ft_extract_line(char *src)
 {
-	int	fd;
-	char *line;
+	char 	*line_found;
+	int		i;
 
-	if (argc != 2)
-		return (0);
-	fd = open(argv[1], O_RDONLY);
-	line = ft_get_next_line(fd);
-	if (line != NULL)
+	if (!src)
+		return (NULL);
+	while (src[i] != '\n' && src[i])
+		i++;
+	line_found = (char *)malloc((i + 2) * sizeof(char));
+	if (!line_found)
+		return (NULL);
+	i = 0;
+	while (src[i] != '\n' && src[i])
 	{
-		printf("%s", line);
-		line = ft_get_next_line(fd);
-		printf("%s", line);
-		line = ft_get_next_line(fd);
-		printf("%s", line);
-		line = ft_get_next_line(fd);
-		printf("%s", line);
+		line_found[i] = src[i];
+		i++;
 	}
-	close (fd);
-	return (0);
+	if (src[i] == '\n')
+	{
+		line_found[i] = src[i];
+		i++;
+	}
+	line_found[i] = '\0';
+	return (line_found);
+}
+
+//elimino la riga trovata dalla stringa letta in precedenza e ritorno il resto di quello che ho già letto
+static char	*ft_rest_readed(char *src)
+{
+	int		len;
+	int		i;
+	char	*rest;
+
+	if (!src)
+	{
+		free(src);
+		return (NULL);
+	}
+	len = ft_strlen(src);
+	while (src[i] != '\n' && src[i])
+		i++;
+	len -= i;
+	rest = (char *) malloc ((len + 1) * sizeof(char));
+	if (!rest)
+		return (NULL);
+	while (len != 0)
+	{
+		*rest = src[i];
+		i++;
+		len--;
+	}
+	return (rest);
 }
