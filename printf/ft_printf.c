@@ -3,22 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:07:02 by gvigano           #+#    #+#             */
-/*   Updated: 2023/11/16 15:05:44 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/12/04 18:30:48 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <math.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "printf.h"
 
-int	ft_print(const char *str, ...) // ... permette alla funzione di ricevere un numero qualsiasi di argomenti
+int	ft_printf(const char *str, ...) // ... permette alla funzione di ricevere un elenco variabile di argomenti facoltativi
 {
-	va_list	ptr;
+	va_list	ptr;// puntatore all'elenco variabile di argomenti facoltativi 
 	size_t	i;
 	
 	if (!str || *str == '\0')
@@ -33,8 +29,7 @@ int	ft_print(const char *str, ...) // ... permette alla funzione di ricevere un 
 			str++;
 		}
 		else
-			while (*str != '%')
-				i += ft_print_char(*str);
+			i += ft_print_char(*str);
 		str++;
 	}
 	va_end(ptr);

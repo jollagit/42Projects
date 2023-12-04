@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_nbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:39:18 by gvigano           #+#    #+#             */
-/*   Updated: 2023/11/16 14:38:39 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/12/04 18:57:47 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <math.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "printf.h"
 
 static size_t	ft_digits(long int num)
 {

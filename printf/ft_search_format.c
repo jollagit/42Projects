@@ -3,21 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_search_format.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:38:06 by gvigano           #+#    #+#             */
-/*   Updated: 2023/11/16 11:38:17 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/12/04 17:19:30 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include <stdio.h> 
-#include <stdarg.h>
-#include <math.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "printf.h"
 
-int	ft_search_format(const char s, va_list ptr)
+int	ft_search_format(va_list ptr, const char s)
 {
 	size_t	i;
 
@@ -33,7 +29,7 @@ int	ft_search_format(const char s, va_list ptr)
 	else if (s == 'u')
 		i += ft_print_unbr(va_arg(ptr, unsigned int));
 	else if (s == 'x' || s == 'X')
-		i += ft_print_hex(va_arg(ptr, unsigned int));
+		i += ft_print_hex(va_arg(ptr, unsigned int), s);
 	else if (s == '%')
 		i += ft_print_percent();
 	return (i);

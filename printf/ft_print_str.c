@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:39:35 by gvigano           #+#    #+#             */
-/*   Updated: 2023/11/16 11:34:05 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/12/04 17:14:19 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <math.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "printf.h"
 
 int	ft_print_str(char *s)
 {

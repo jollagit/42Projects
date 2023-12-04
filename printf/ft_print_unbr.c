@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_unbr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:45:29 by gvigano           #+#    #+#             */
-/*   Updated: 2023/11/16 12:32:17 by gvigano          ###   ########.fr       */
+/*   Updated: 2023/12/04 19:04:58 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdarg.h>
-#include <math.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include "printf.h"
 
 static int	ft_nlen(unsigned int n)
 {
@@ -33,21 +29,23 @@ static int	ft_nlen(unsigned int n)
 
 static char	*ft_unsigned_itoa(unsigned int n)
 {
-	char			*num;
+	char			*ptr;
 	size_t			len;
+	long int		num;
 
-	len = ft_nlen(n);
-	num = (char *) malloc ((len + 1) * sizeof(char));
-	if (!num)
-		return (0);
-	num[len] = '\0';
-	while (n != 0)
+	num = (long int)n;
+	len = ft_nlen(num);
+	ptr = (char *) malloc ((len + 1) * sizeof(char));
+	if (!ptr)
+		return (NULL);
+	*(ptr + len) = '\0';
+	while (num != 0)
 	{
-		num[len -1] = n % 10 + '0';
-		n /= 10;
 		len--;
+		*(ptr + len) = n % 10 + '0';
+		n /= 10;
 	}
-	return (num);
+	return (ptr);
 }
 
 int	ft_print_unbr(unsigned int n)
