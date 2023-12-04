@@ -6,7 +6,7 @@
 /*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:45:29 by gvigano           #+#    #+#             */
-/*   Updated: 2023/12/04 19:04:58 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2023/12/04 19:24:38 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ int	ft_print_unbr(unsigned int n)
 {
 	char	*num;
 	size_t	i;
-	
+
 	i = 0;
 	if (n == 0)
 		i += write(1, "0", 1);
-	else 
+	else
 	{
 		num = ft_unsigned_itoa(n);
 		i += ft_print_str(num);

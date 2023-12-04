@@ -19,4 +19,3 @@ int	ft_print_hex(unsigned int n, const char c);
 int	ft_search_format(va_list ptr, const char s);
 
 #endif
-

@@ -6,7 +6,7 @@
 /*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:42:52 by gvigano           #+#    #+#             */
-/*   Updated: 2023/12/04 19:06:55 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2023/12/04 19:34:49 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ static void	ft_putchar_fd(char c, int fd)
 	write(fd, &c, 1);
 }
 
-static void	ft_put_hex(uintptr_t num, const char c)// uninptr e' un unsigend int type grande abbastanza da portare un puntatore
+static void	ft_put_hex(uintptr_t num, const char c)
 {
 	if (num >= 16)
 	{
 		ft_put_hex(num / 16, c);
 		ft_put_hex(num % 16, c);
 	}
-	else if (num <= 9) // la funzione e' arrivta a lavorare con single digit esadecimali
+	else if (num <= 9)
 		ft_putchar_fd((num + '0'), 1);
-	else // la digit e' nel range tra 10 e 1 che rappresenta le gidit fra 'a' e 'f'
+	else
 	{
 		if (c == 'x')
 			ft_putchar_fd((num - 10 + 'a'), 1);
@@ -65,3 +65,12 @@ int	ft_print_hex(unsigned int n, const char c)
 	}
 	return (i);
 }
+
+/* uninptr e' un unsigend int type 
+grande abbastanza da portare un puntatore.
+
+if (num <= 9): la funzione e' arrivta a
+lavorare con single digit esadecimali. 
+
+else: la digit e' nel range tra 10 e 1
+che rappresenta le gidit fra 'a' e 'f'. */
