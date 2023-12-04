@@ -8,7 +8,12 @@ RM = rm -f
 
 AR = ar rcs
 
-SRCS = 
+SRCS = ft_print_hex.c \
+		ft_print_nbr.c \
+		ft_print_ptr.c \
+		ft_print_str.c \
+		ft_print_unbr.c \
+		ft_printf.c 
 
 OBJS = $(SRCS:.c=.o)
 
