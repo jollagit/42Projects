@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:00:32 by gvigano           #+#    #+#             */
-/*   Updated: 2024/01/11 16:40:38 by gvigano          ###   ########.fr       */
+/*   Updated: 2024/01/15 19:00:24 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 char	*ft_get_next_line(int fd)
 {
-	static char	*line;
-	char		*src;
-
+	char			*line;
+	static char		*src;
+	
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	src = ft_read_buffer(fd, src);
-	line = ft_extract_line(src);
+	if (!src)
+		return (NULL);
+	line = ft_search_extract(src);
 	src = ft_rest_readed(src);
 	if (!*line || !line)
 	{
@@ -30,7 +32,6 @@ char	*ft_get_next_line(int fd)
 	return (line);
 }
 
-// leggo una stringa di buffer_size caratteri dal file
 char	*ft_read_buffer(int fd, char *src)
 {
 	char	*tmp;
@@ -46,7 +47,6 @@ char	*ft_read_buffer(int fd, char *src)
 		if (current == -1)
 		{
 			free(tmp);
-			free(src);
 			return (NULL);
 		}
 		tmp[current] = '\0';
@@ -56,14 +56,11 @@ char	*ft_read_buffer(int fd, char *src)
 	return (src);
 }
 
-// estraggo dalla stringa letta la riga che trovo
-char	*ft_extract_line(char *src)
+char	*ft_search_extract(char *src)
 {
 	char 	*line_found;
 	int		i;
 
-	if (!src)
-		return (NULL);
 	i = 0;
 	while (src[i] != '\n' && src[i])
 		i++;
@@ -85,21 +82,20 @@ char	*ft_extract_line(char *src)
 	return (line_found);
 }
 
-//elimino la riga trovata dalla stringa letta in precedenza e ritorno il resto di quello che ho già letto
 char	*ft_rest_readed(char *src)
 {
 	int		t;
 	int		i;
 	char	*rest;
 
-	if (!src)
+	i = 0;
+	while (src[i] != '\n' && src[i])
+		i++;
+	if (!src[i])
 	{
 		free(src);
 		return (NULL);
 	}
-	i = 0;
-	while (src[i] != '\n' && src[i])
-		i++;
 	rest = (char *)malloc((ft_strlen(src) -i +1) * sizeof(char));
 	if (!rest)
 		return (NULL);
@@ -111,22 +107,41 @@ char	*ft_rest_readed(char *src)
 	free(src);
 	return (rest);
 }
-int	main(int argc, char *argv[])
+
+int	main(void)
 {
-	FILE	*fd;
 	char	*line;
-	
-	if(argc != 2)
+
+	line = (char *)malloc ((BUFFER_SIZE + 1) * sizeof(char));
+	if (!line)
 		return (0);
-	fd = fopen(argv[1], "r");
-	if (!fd)
-	{
-		printf("Errore nell'aprire il file");
-		return (1);
-	}
+	write(2, "ciao", 4);
+	write(2, "\n", 1);
+	write(2, "CiaO", 4);
+	write(2, "\n", 1);
+	write(2, "CIAO", 4);
+	write(2, "\n", 1);
+	line = ft_get_next_line(1);
+	printf("%s", line);
+	line = ft_get_next_line(1);
+	printf("%s", line);
+	line = ft_get_next_line(1);
+	printf("%s", line);
+	return (0);
+}
+/*int	main(int argc, char *argv[])
+{
+	char	*line;
+	FILE	*fd;
+	
+	if (argc != 2)
+		return (0);
 	line = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!line)
 		return (0);
+	fd = fopen(argv[1], "r");
+	if (!fd)
+		return (0);
 	line = ft_get_next_line(fileno(fd));
 	printf("%s", line);
 	line = ft_get_next_line(fileno(fd));
@@ -135,11 +150,22 @@ int	main(int argc, char *argv[])
 	printf("%s", line);
 	line = ft_get_next_line(fileno(fd));
 	printf("%s", line);
-	fclose(fd);
 	return (0);
-}
+}*///
 
-/*L'istruzione 'static' mantiene in memoria il valore di una variabile
+/* @ )L'istruzione 'static' mantiene in memoria il valore di una variabile
 interna alla funzione dopo ogni chiamata, queste variabili hanno 
-durata estesa a tutto il tempo di esecuzione del programma.
+durata estesa a tutto il tempo di esecuzione del programma o alemeno
+finche non vengono liberate attraverso free.
+La struttura della funzione si basa su 3 altre funzioni
+ 1 ) Nella prima leggo una stringa di buffer_size caratteri dal file
+usando una variabile char * temporanea,se non trovo alcun errore
+in lettura allora concateno attraverso la funzione ft_strjoin
+il contenuto precedentemente letto con quello esistente. 
+ 2 ) Nella seconda cerco in cio' che ho letto una riga e la estraggo 
+assegnandola ad un'altra variabile.
+ 3 ) Nella terza, siccome sto ancora lavorando con la viabile src 
+che comprende tutto quello che ho letto nella prima fuznione, elimino
+la riga trovata dalla stringa letta in precedenza e ritorno il resto
+di quello che ho già letto in modo da poterlo usare nella chiamata successiva.
 */
