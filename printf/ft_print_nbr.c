@@ -6,11 +6,11 @@
 /*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:39:18 by gvigano           #+#    #+#             */
-/*   Updated: 2023/12/04 18:57:47 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2024/01/17 19:58:59 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static size_t	ft_digits(long int num)
 {
@@ -63,7 +63,7 @@ int	ft_print_nbr(int n)
 	size_t	nlen;
 
 	nlen = 0;
-	num = itoa(n);
+	num = ft_itoa(n);
 	nlen = ft_print_str(num);
 	free(num);
 	return (nlen);

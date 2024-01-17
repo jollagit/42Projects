@@ -6,11 +6,11 @@
 /*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 11:45:29 by gvigano           #+#    #+#             */
-/*   Updated: 2023/12/04 19:24:38 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2024/01/17 19:58:45 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static int	ft_nlen(unsigned int n)
 {
@@ -31,15 +31,15 @@ static char	*ft_unsigned_itoa(unsigned int n)
 {
 	char			*ptr;
 	size_t			len;
-	long int		num;
 
-	num = (long int)n;
-	len = ft_nlen(num);
+	len = ft_nlen(n);
 	ptr = (char *) malloc ((len + 1) * sizeof(char));
 	if (!ptr)
 		return (NULL);
+	if (n == 0)
+		ptr[0] = '0';
 	*(ptr + len) = '\0';
-	while (num != 0)
+	while (n != 0)
 	{
 		len--;
 		*(ptr + len) = n % 10 + '0';

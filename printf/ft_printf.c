@@ -6,11 +6,11 @@
 /*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:07:02 by gvigano           #+#    #+#             */
-/*   Updated: 2023/12/04 19:44:19 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2024/01/17 20:14:31 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static int	ft_print_char(char c)
 {
@@ -28,7 +28,7 @@ static int	ft_search_format(va_list ptr, const char s)
 	else if (s == 's')
 		i += ft_print_str(va_arg(ptr, char *));
 	else if (s == 'p')
-		i += ft_print_ptr(va_arg(ptr, unsigned long long));
+		i += ft_print_ptr(va_arg(ptr, void *));
 	else if (s == 'd' || s == 'i')
 		i += ft_print_nbr(va_arg(ptr, int));
 	else if (s == 'u')
@@ -36,7 +36,7 @@ static int	ft_search_format(va_list ptr, const char s)
 	else if (s == 'x' || s == 'X')
 		i += ft_print_hex(va_arg(ptr, unsigned int), s);
 	else if (s == '%')
-		i += write(1, '%', 1);
+		i += write(1, &s, 1);
 	return (i);
 }
 
@@ -63,6 +63,15 @@ int	ft_printf(const char *str, ...)
 	va_end(ptr);
 	return (i);
 }
+
+/*int	main(int argc, char *argv[])
+{
+	if (argc != 4)
+		return (0);
+	ft_printf("ciao sono %s ed ho %x %% %s\n", argv[1], atoi(argv[2]), argv[3]);
+	printf("ciao sono %s ed ho %x %% %s\n", argv[1], atoi(argv[2]), argv[3]);
+	return (0);
+}*/
 
 /* ... permette alla funzione diricevere un elenco
 variabile di argomenti facoltativi.

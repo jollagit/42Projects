@@ -6,11 +6,11 @@
 /*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:42:52 by gvigano           #+#    #+#             */
-/*   Updated: 2023/12/04 19:34:49 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2024/01/17 19:59:04 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static int	ft_nlen(uintptr_t n)
 {
@@ -55,7 +55,6 @@ int	ft_print_hex(unsigned int n, const char c)
 	size_t	i;
 
 	i = 0;
-	i += write(1, "0x", 2);
 	if (n == 0)
 		i += write(1, "0", 1);
 	else
