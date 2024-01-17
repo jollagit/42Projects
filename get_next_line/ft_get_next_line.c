@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:00:32 by gvigano           #+#    #+#             */
-/*   Updated: 2024/01/15 19:00:24 by gvigano          ###   ########.fr       */
+/*   Updated: 2024/01/17 17:43:14 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,31 +108,30 @@ char	*ft_rest_readed(char *src)
 	return (rest);
 }
 
-int	main(void)
+
+/*int	main(void)
 {
 	char	*line;
 
 	line = (char *)malloc ((BUFFER_SIZE + 1) * sizeof(char));
 	if (!line)
 		return (0);
-	write(2, "ciao", 4);
-	write(2, "\n", 1);
+	write(1, "ciao", 4);
+	write(1, "\n", 1);
 	write(2, "CiaO", 4);
 	write(2, "\n", 1);
 	write(2, "CIAO", 4);
 	write(2, "\n", 1);
-	line = ft_get_next_line(1);
-	printf("%s", line);
-	line = ft_get_next_line(1);
-	printf("%s", line);
-	line = ft_get_next_line(1);
+	line = ft_get_next_line(0);
 	printf("%s", line);
 	return (0);
-}
-/*int	main(int argc, char *argv[])
+}*/
+
+int	main(int argc, char *argv[])
 {
 	char	*line;
 	FILE	*fd;
+	FILE	*file;
 	
 	if (argc != 2)
 		return (0);
@@ -142,16 +141,19 @@ int	main(void)
 	fd = fopen(argv[1], "r");
 	if (!fd)
 		return (0);
+	file = fopen("hello.txt", "r");
+	if (!file)
+		return (0);
 	line = ft_get_next_line(fileno(fd));
+	printf("%s", line);
+	line = ft_get_next_line(fileno(file));
 	printf("%s", line);
 	line = ft_get_next_line(fileno(fd));
 	printf("%s", line);
-	line = ft_get_next_line(fileno(fd));
-	printf("%s", line);
-	line = ft_get_next_line(fileno(fd));
+	line = ft_get_next_line(fileno(file));
 	printf("%s", line);
 	return (0);
-}*///
+}
 
 /* @ )L'istruzione 'static' mantiene in memoria il valore di una variabile
 interna alla funzione dopo ogni chiamata, queste variabili hanno 

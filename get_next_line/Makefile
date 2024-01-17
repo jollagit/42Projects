@@ -13,7 +13,7 @@ SRCS = ft_strlen.c \
 		ft_get_next_line.c \
 		ft_read_buffer.c \
 		ft_rest_readed.c \
-		ft_extract_line.c 
+		ft_search_extract.c 
 
 OBJS = $(SRCS:.c=.o)
 
