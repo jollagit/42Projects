@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:07:02 by gvigano           #+#    #+#             */
-/*   Updated: 2024/01/17 20:14:31 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2024/01/29 14:22:50 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ int	ft_printf(const char *str, ...)
 
 /*int	main(int argc, char *argv[])
 {
-	if (argc != 4)
+	if (argc != 3)
 		return (0);
-	ft_printf("ciao sono %s ed ho %x %% %s\n", argv[1], atoi(argv[2]), argv[3]);
-	printf("ciao sono %s ed ho %x %% %s\n", argv[1], atoi(argv[2]), argv[3]);
+	ft_printf("char stampati  %d \n", ft_printf(" %p %p ", argv[1], argv[2]));
+	ft_printf("char stampati  %d \n", printf(" %p %p ", argv[1], argv[2]));
 	return (0);
 }*/
 
-/* ... permette alla funzione diricevere un elenco
+/* ... permette alla funzione di ricevere un elenco
 variabile di argomenti facoltativi.
 va_list	ptr: puntatore all'elenco variabile di argomenti facoltativi */

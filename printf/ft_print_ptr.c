@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 12:40:32 by gvigano           #+#    #+#             */
-/*   Updated: 2024/01/17 19:58:55 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2024/01/29 14:28:25 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,18 @@ static void	ft_put_ptr(uintptr_t num)
 		ft_putchar_fd((num - 10 + 'a'), 1);
 }
 
-int	ft_print_ptr(const void *p)
+int	ft_print_ptr(void *p)
 {
 	size_t		i;
 	uintptr_t	ptr;
 
 	i = 0;
 	ptr = (uintptr_t)p;
-	i += write(1, "0x", 2);
 	if (ptr == 0)
-		i += write(1, "0", 1);
+		i += write(1, "(nil)", 5);
 	else
 	{
+		i += write (1, "0x", 2);
 		ft_put_ptr(ptr);
 		i += ft_ptr_len(ptr);
 	}
