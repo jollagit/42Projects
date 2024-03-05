@@ -3,20 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:00:32 by gvigano           #+#    #+#             */
-/*   Updated: 2024/02/19 18:08:34 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2024/03/05 16:44:39 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 42
+#endif
 
 char	*get_next_line(int fd)
 {
 	char			*line;
 	static char		*src;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	src = ft_read_buffer(fd, src);
@@ -32,10 +35,10 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-char	*ft_read_buffer(int fd, char *src)
+static char	*ft_read_buffer(int fd, char *src)
 {
-	char	*tmp;
-	int		current;
+	char		*tmp;
+	ssize_t		current;
 
 	tmp = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!tmp)
@@ -57,10 +60,10 @@ char	*ft_read_buffer(int fd, char *src)
 	return (src);
 }
 
-char	*ft_search_extract(char *src)
+static char	*ft_search_extract(char *src)
 {
-	char 	*line_found;
-	int		i;
+	char	*line_found;
+	size_t	i;
 
 	i = 0;
 	while (src[i] != '\n' && src[i])
@@ -83,7 +86,7 @@ char	*ft_search_extract(char *src)
 	return (line_found);
 }
 
-char	*ft_rest_readed(char *src)
+static char	*ft_rest_readed(char *src)
 {
 	int		t;
 	int		i;
@@ -109,7 +112,6 @@ char	*ft_rest_readed(char *src)
 	return (rest);
 }
 
-
 /*int	main(void)
 {
 	char	*line;
@@ -117,9 +119,16 @@ char	*ft_rest_readed(char *src)
 	line = (char *)malloc ((BUFFER_SIZE + 1) * sizeof(char));
 	if (!line)
 		return (0);
-	line = ft_get_next_line(fileno(stdin));
-	if (line != NULL)
-		printf("%s", line);
+	line = get_next_line(fileno(stdin));
+	printf("%s", line);
+	line = get_next_line(fileno(stdin));
+	printf("%s", line);
+	line = get_next_line(fileno(stdin));
+	printf("%s", line);
+	line = get_next_line(fileno(stdin));
+	printf("%s", line);
+	line = get_next_line(fileno(stdin));
+	printf("%s", line);
 	free(line);
 	return (0);
 }*/
@@ -134,12 +143,21 @@ char	*ft_rest_readed(char *src)
 	line = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!line)
 		return (0);
-	file = fopen("hello.txt", "r");
+	file = fopen(argv[1], "r");
 	if (!file)
 		return (0);
 	line = get_next_line(fileno(file));
 	printf("%s", line);
+	line = get_next_line(fileno(file));
+	printf("%s", line);
+	line = get_next_line(fileno(file));
+	printf("%s", line);
+	line = get_next_line(fileno(file));
+	printf("%s", line);
+	line = get_next_line(fileno(file));
+	printf("%s", line);
 	free(line);
+	close(file);
 	return (0);
 }*/
 

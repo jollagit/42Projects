@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:00:41 by gvigano           #+#    #+#             */
-/*   Updated: 2024/02/19 17:33:16 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2024/03/05 16:37:51 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "get_next_line.h"
+#include "get_next_line.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*ptr;
 	size_t	i;
 	size_t	t;
-	
+
 	if (!s1)
 	{
-		s1 = (char *)malloc(1 * sizeof(char)); 
+		s1 = (char *)malloc(1 * sizeof(char));
 		s1[0] = '\0';
 	}
 	if (!s1 || !s2)
@@ -32,7 +32,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = -1;
 	t = 0;
 	if (s1)
-		while(s1[++i] != '\0')
+		while (s1[++i] != '\0')
 			ptr[i] = s1[i];
 	while (s2[t] != '\0')
 		ptr[i++] = s2[t++];

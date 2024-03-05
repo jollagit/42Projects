@@ -1,9 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/05 16:14:38 by gvigano           #+#    #+#             */
+/*   Updated: 2024/03/05 16:45:37 by gvigano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 2048
-#endif
 
 # include <stdio.h>
 # include <unistd.h>
@@ -14,9 +22,6 @@
 
 size_t		ft_strlen(const char *s);
 char		*get_next_line(int fd);
-char		*ft_read_buffer(int fd, char *src);
 char		*ft_strjoin(char *s1, char *s2);
-char		*ft_search_extract(char *src);
-char		*ft_rest_readed(char *src);
 
 #endif
