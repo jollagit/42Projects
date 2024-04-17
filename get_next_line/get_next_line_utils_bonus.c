@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 12:00:41 by gvigano           #+#    #+#             */
-/*   Updated: 2024/03/19 16:25:47 by gvigano          ###   ########.fr       */
+/*   Created: 2024/03/13 15:15:59 by gvigano           #+#    #+#             */
+/*   Updated: 2024/03/13 15:16:37 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {
@@ -61,16 +61,3 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-
-/*funzione ft_strjoin (che non avevo strutturato bene)
-USATA PER CONCATENARE IL CONTENUTO LETTO DA FD CON QUELLO DELLA 
-VARIABILE SU CUI LAVORO:
- @ ) Se s1 e' NULL alloco la memoria per una stringa vuota
-cosi che se s1 e' inizialmente NULL si comporta comunque
-come una stringa vuota.
- @ ) Dopo controllo se s1 o s2 sono NULL, se una delle due
-e' NULL restituisco NULL per indicare un errore.
- @ ) alla fine libero la memoria allocata per l'originale s1
-(visto che e' stata dinamicamente allocata) per evitare 
-perdite di memoria.
-*/
