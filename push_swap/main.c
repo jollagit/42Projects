@@ -2,12 +2,16 @@
 
 int main (int argc, char *argv[])
 {
-	t_list	*list;
+	t_list	*listA;
+	t_list	*listB;
 
 	if (argc < 2)
 		return (0);
-	list = NULL;
-	list = fill_list(list, argv);
-	print_list(list);
+	listA = NULL;
+	listB = NULL;
+	listA = fill_list(listA, argv);
+	push(&listA, &listB);
+	print_list(listA, listB);
 	return (0);
 }
+

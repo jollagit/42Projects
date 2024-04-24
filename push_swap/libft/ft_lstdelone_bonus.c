@@ -6,7 +6,7 @@
 /*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:04:02 by gvigano           #+#    #+#             */
-/*   Updated: 2024/04/23 19:37:41 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2024/04/24 18:30:57 by giuliaviga       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(int))
 		current = current->next;
 	}
 }
-void	ft_delete(void *element)
-{
-	if(element) //solo se e' stata corettamente allocata
-		free(element);
-}
+
 t_list	*ft_newelem(void *newel)
 {
 	t_list	*element;
