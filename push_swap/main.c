@@ -10,7 +10,7 @@ int main (int argc, char *argv[])
 	listA = NULL;
 	listB = NULL;
 	listA = fill_list(listA, argv);
-	push(&listA, &listB);
+	reverse_rotate(&listA);
 	print_list(listA, listB);
 	return (0);
 }
