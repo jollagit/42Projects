@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/29 16:07:43 by gvigano           #+#    #+#             */
+/*   Updated: 2024/04/29 17:35:31 by gvigano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_list	*swap(t_list *list)
@@ -37,6 +49,8 @@ t_list	*rotate(t_list *list)
 	t_list	*current;
 	int		head;
 
+	if (!list || list->next == NULL)
+		return (list);
 	head = list->content;
 	current = list->next;
 	while (current->next != NULL)
@@ -53,27 +67,29 @@ t_list	*rotate(t_list *list)
 
 void	reverse_rotate(t_list **list)
 {
-	int		tail;
+	t_list	*new_tail;
 	t_list	*current;
-	t_list	*tmp;
+	t_list	*new_head;
 
+	if (!*list || (*list)->next == NULL)
+		return ;
 	current = *list;
+	new_tail = NULL;
+	new_head = NULL;
 	while (current->next != NULL)
 	{
 		if (current->next->next == NULL)
-		{
-			tail = current->next->content;
-			current->next = NULL;
-		}
+			new_tail = current;
 		current = current->next;
 	}
-	current = *list;
-	tmp = *list;
-	while (tmp->next != NULL)
-	{		
-		tmp = tmp->next;
-		tmp->content = current->content;
+	if (!new_tail)
+		return ;
+	new_head = new_tail->next;
+	new_tail->next = NULL;
+	current = new_head;
+	while (current->next != NULL)
 		current = current->next;
-	}
+	current->next = *list;
+	*list = new_head;
 	return ;
 }

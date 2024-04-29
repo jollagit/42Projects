@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: giuliaviga <giuliaviga@student.42.fr>      +#+  +:+       +#+        */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:32:32 by gvigano           #+#    #+#             */
-/*   Updated: 2024/04/24 18:31:09 by giuliaviga       ###   ########.fr       */
+/*   Updated: 2024/04/29 15:55:22 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	ft_lstiter(t_list *lst, void (*f)(int));
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(int));
-void	ft_lstclear(t_list **lst, void (*del)(int));
-t_list	*ft_lstmap(t_list *lst, int (*f)(int), void (*del)(int));
+void	ft_lstclear(t_list **lst);
+t_list	*ft_lstmap(t_list *lst, int (*f)(int));
 
 //	PRINTF Functions	//
 
