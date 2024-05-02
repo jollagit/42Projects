@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:05:40 by gvigano           #+#    #+#             */
-/*   Updated: 2023/11/03 18:50:21 by gvigano          ###   ########.fr       */
+/*   Updated: 2024/05/02 16:05:43 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ char	**ft_split(const char *s, char c)
 	*ptr = NULL;
 	return (mat);
 }
+
 /*int	main(int argc, char *argv[])
 {
 	char	**str;

@@ -6,17 +6,11 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:07:36 by gvigano           #+#    #+#             */
-/*   Updated: 2024/04/29 18:35:54 by gvigano          ###   ########.fr       */
+/*   Updated: 2024/05/02 18:11:29 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_error()
-{
-	printf("Error\n");
-	return ;
-}
 
 t_list	*fill_list(t_list *list,char **element)
 {
@@ -65,18 +59,15 @@ char	**check_parameter(int argc, char **argv)
 
 	if (!argv)
 		return (NULL);//error
-	str = malloc((argc) * (sizeof(char *)));
-	if (!str)
-		return (NULL);
 	t = 0;
 	i = 1;
 	if (argc > 2)
 	{
+		str = malloc((argc) * (sizeof(char *)));
+		if (!str)
+			return (NULL);
 		while (i < argc)
-		{
-			str[t++] = argv[i++];
-			ft_printf("%s\n", str[t - 1]);
-		}
+			ft_strlcpy(&str[t++], argv[i++]);
 	}
 	else 
 		str = ft_split(argv[1], ' ');

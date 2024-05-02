@@ -6,33 +6,33 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:18:12 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/30 18:59:43 by gvigano          ###   ########.fr       */
+/*   Updated: 2024/05/02 15:54:14 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char **dest, const char *src)
 {
 	size_t	i;
+	size_t	x;
 
 	i = 0;
+	x = 0;
 	if (!dest || !src)
 		return (0);
-	if (size == 0)
+	*dest = malloc ((ft_strlen(src) + 1) * sizeof(char));
+	if (!dest)
+		return (0);
+	while (src[x])
 	{
-		while (src[i])
-			i++;
-		return (i);
+		dest[i][x] = src[x];
+		x++;
 	}
-	while (i < size -1 && src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
+	dest[i][x] = '\0';
 	return (ft_strlen(src));
 }
+
 
 /*int	main(int argc, char *argv[])
 {
