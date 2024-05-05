@@ -6,16 +6,16 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 10:43:03 by gvigano           #+#    #+#             */
-/*   Updated: 2023/10/31 18:09:42 by gvigano          ###   ########.fr       */
+/*   Updated: 2024/05/05 17:40:39 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long long int	ft_atoi(const char *str)
 {
-	size_t	base;
-	size_t	sign;
+	long long int	base;
+	size_t			sign;
 
 	if (!str)
 		return (0);

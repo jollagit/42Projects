@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:07:36 by gvigano           #+#    #+#             */
-/*   Updated: 2024/05/03 16:14:35 by gvigano          ###   ########.fr       */
+/*   Updated: 2024/05/05 21:13:46 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,34 @@ void	free_all(t_list **list1, t_list **list2, char ***str)
 	if (list2 != NULL)
 		ft_lstclear(list2);
 	while ((*str)[i])
-		free((*str)[i++]);//ft_printf("Error");						
-	free ((*str));
+		free((*str)[i++]);
+	free((*str));
 }
 
-t_list	*fill_list(t_list *list,char **element)
+char	**fill_mat(int argc, char **argv)
+{
+	size_t	i;
+	size_t	t;
+	char	**mat;
+
+	i = 1;
+	t = 0;
+	if (argc > 2)
+	{
+		if (check_input(argv) == 0)
+			return (NULL);
+		mat = malloc((argc) * (sizeof(char *)));
+		if (!mat)
+			return (NULL);
+		while (argv[i])
+			ft_strlcpy(&mat[t++], argv[i++]);
+	}
+	else
+		mat = ft_split(argv[1], ' ');
+	return (mat);
+}
+
+t_list	*fill_list(t_list *list, char **element)
 {
 	size_t	i;
 	t_list	*new_element;
@@ -52,7 +75,7 @@ void	print_list(t_list *list_A, t_list *list_B)
 			ft_printf("%d\t", list_A->content);
 			list_A = list_A->next;
 		}
-		else 
+		else
 			ft_printf("\t");
 		if (list_B)
 		{

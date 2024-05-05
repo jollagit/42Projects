@@ -6,7 +6,7 @@
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 14:18:12 by gvigano           #+#    #+#             */
-/*   Updated: 2024/05/02 15:54:14 by gvigano          ###   ########.fr       */
+/*   Updated: 2024/05/05 16:09:04 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ size_t	ft_strlcpy(char **dest, const char *src)
 	dest[i][x] = '\0';
 	return (ft_strlen(src));
 }
-
 
 /*int	main(int argc, char *argv[])
 {

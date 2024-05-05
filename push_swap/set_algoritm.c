@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   set_algoritm.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 16:07:52 by gvigano           #+#    #+#             */
-/*   Updated: 2024/05/05 20:35:50 by gvigano          ###   ########.fr       */
+/*   Created: 2024/05/05 21:15:57 by gvigano           #+#    #+#             */
+/*   Updated: 2024/05/05 22:00:33 by gvigano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+t_list	*get_array(t_list *list, int size)
 {
-	t_list	*list_a;
-	t_list	*list_b;
-	char	**str;
+	int	i;
+	int	*array;
 
-	str = NULL;
-	if (argc < 2)
-		return (0);
-	str = check_parameter(argc, argv);
-	if (!str)
+	i = 0;
+	array = calloc(size, sizeof(int));
+	if (!array)
+		return ;
+	while (i < size)
 	{
-		ft_putendl_fd("Error", 2);
-		return (0);
+		if (array[i] == '\0')
+		{
+			array[i] = list->content;
+			list = list->next;
+		}
+		if (array[i] > list->content)
+		{
+			
+		}
+		i++;
 	}
-	list_a = NULL;
-	list_b = NULL;
-	list_a = fill_list(list_a, str);
-	if (ft_lstsize(list_a) < 2)
-	{
-		free_all(&list_a, &list_b, &str);
-		return (0);
-	}
-	print_list(list_a, list_b);
-	free_all(&list_a, &list_b, &str);
-	return (0);
+	return (array);
 }
+
