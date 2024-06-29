@@ -10,6 +10,7 @@
 # include <fcntl.h>
 # include <errno.h>
 
+void	free_all(char **str);
 char	**find_args(char *argv);
 int		check_fd(int fd, int direction);
 char	**find_path(char **env, char *argv[]);

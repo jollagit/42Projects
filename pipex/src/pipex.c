@@ -1,6 +1,6 @@
 # include "pipex.h"
 
-static void	child_process(char *argv[], char *env[], int *fd, char *paths[])
+static void	child_process1(char *argv[], char *env[], int *fd, char *paths[])
 {
 	int		i;
 	int		infile;
@@ -16,14 +16,12 @@ static void	child_process(char *argv[], char *env[], int *fd, char *paths[])
 	close(fd[1]);
 	args = find_args(argv[2]);
 	execve(paths[0], args, env);
-	perror("execve cat");
-	while (args[i])
-		free(args[i++]);
-	free (args);
-	//free (paths);
+	perror("execve cmd1");
+	free_all(args);
+	exit(EXIT_FAILURE);
 }
 
-static void	parent_process(char *argv[], char *env[], int *fd, char *paths[])
+static void	child_process2(char *argv[], char *env[], int *fd, char *paths[])
 {
 	int		i;
 	int		outfile;
@@ -45,37 +43,51 @@ static void	parent_process(char *argv[], char *env[], int *fd, char *paths[])
 	close(outfile);
 	args = find_args(argv[3]);
 	execve(paths[1], args, env);
-	perror("execve grep");
-	while (args[i])
-		free (args[i++]);
-	free(args);
-	//free(paths);
+	perror("execve cmd2");
+	free_all(args);
+	exit(EXIT_FAILURE);
 }
 
-static void	do_process(char	*argv[], char *env[], int *fd)
+static void	do_process2(char *argv[], char *env[], int *fd, char **paths)
 {
-	int		i;
-	int		pid;
-	char	**paths;
+	int	pid2;
 
-	i = 0;
-	paths = find_path(env, argv);
-	pid = fork();
-	if (pid < 0)
+	pid2 = fork();
+	if (pid2 < 0)
 	{
 		perror("fork");
 		return ;
 	}
-	if (pid == 0)
-		child_process(argv, env, fd, paths);
+	if (pid2 == 0)
+		child_process2(argv, env, fd, paths);
 	else
 	{
-		waitpid(pid, NULL, 0);
-		parent_process(argv, env, fd, paths);
+		close(fd[0]);
+		close(fd[1]);
+		wait(NULL);
+		wait(NULL);
 	}
-	while (paths[i])
-		free (paths[i++]);
-	free (paths);
+}
+
+static void	do_process1(char *argv[], char *env[], int *fd)
+{
+	int		i;
+	int		pid1;
+	char	**paths;
+
+	i = 0;
+	paths = find_path(env, argv);
+	pid1 = fork();
+	if (pid1 < 0)
+	{
+		perror("fork");
+		return ;
+	}
+	if (pid1 == 0)
+		child_process1(argv, env, fd, paths);
+	else
+		do_process2(argv, env, fd, paths);
+	free_all(paths);
 }
 
 int main(int argc, char *argv[], char *env[])
@@ -91,6 +103,6 @@ int main(int argc, char *argv[], char *env[])
 		perror("pipe");
 		return (1);
 	}
-	do_process(argv, env, fd);
+	do_process1(argv, env, fd);
 	return (0);
 }

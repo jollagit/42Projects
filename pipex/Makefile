@@ -1,6 +1,6 @@
 NAME		:= pipex
 LIBFT		:= libft/libft.a
-CC			:= gcc -g
+CC			:= cc
 CFLAGS		:= -Werror -Wextra -Wall -I./include
 LIB			:= ft
 RM			:= rm -rf
@@ -9,7 +9,8 @@ BUILD_DIR	:= .build
 DIR_DUP		:= mkdir -p $(@D)
 
 SRCS		:=	$(SRC_DIR)/pipex.c \
-				$(SRC_DIR)/utils.c
+				$(SRC_DIR)/pipex_utils.c \
+				$(SRC_DIR)/check_utils.c
 
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
