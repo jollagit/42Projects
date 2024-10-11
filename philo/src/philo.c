@@ -1,14 +1,10 @@
 #include "philo.h"
 
-// implementa funzione check philo, condizione di fine simulazione ..
-
 static int	eating(t_philo *philo)
 {
 	t_condition	*condition;
 
 	condition = philo->condition;
-	if (check_death(condition) == 1)
-		return (1);
 	pthread_mutex_lock(&philo->left_fork->mutex);
 	if (check_death(condition) == 1)
 	{
@@ -19,6 +15,8 @@ static int	eating(t_philo *philo)
 	if (condition->num_of_philos != 1)
 	{
 		pthread_mutex_lock(&philo->right_fork->mutex);
+		if (check_death(condition) == 1)
+			return (1);
 		printf("%ldms philo %d is eating \n", get_time() - condition->init_time, philo->id);
 		pthread_mutex_lock(&condition->eating_mutex);
 		philo->last_meal = get_time();
@@ -45,15 +43,13 @@ static void	*routine(void *args)
 		if (check_death(condition) == 1)
 			return (NULL);
 		printf("%ldms philo %d is thinking \n", get_time() - condition->init_time, philo->id);
-		if (check_death(condition) == 1)
-			return (NULL);
 		if (eating(philo) == 1)
 			return (NULL);
+		if (philo->meals_eaten == condition->num_time_to_eat)
+			condition->ate_all++;
 		if (check_death(condition) == 1)
 			return (NULL);
 		printf("%ldms philo %d is sleeping \n", get_time() - condition->init_time, philo->id);
-		if (check_death(condition) == 1)
-			return (NULL);
 		usleep(condition->time_to_sleep * 1000);
 		i++;
 	}
@@ -77,9 +73,14 @@ static void	*simulation_check(void *args)
 				printf("%ldms philo %d has died \n", get_time() - condition->init_time, condition->philo[i].id);
 				return (NULL);
 			}
+			if (condition->ate_all == condition->num_of_philos)
+			{
+				printf("%ldms all philosophers have eaten \n", get_time() - condition->init_time);
+				return (NULL);
+			}
 			i++;
 		}
-		usleep(1);
+		usleep(100);
 	}
 }
 
@@ -94,7 +95,7 @@ static void	simulation(t_condition *condition)
 	while (i < condition->num_of_philos)
 	{
 		pthread_create(&condition->philo[i].thread, NULL, &routine, &condition->philo[i]);
-		usleep(1);
+		usleep(100);
 		i++;
 	}
 	pthread_create(&monitor_thread, NULL, &simulation_check, condition);
@@ -108,14 +109,21 @@ static void	simulation(t_condition *condition)
 
 int	main(int argc, char *argv[])
 {
+	int			i;
 	t_condition	condition;
 
+	i = 0;
 	if (argc < 5)
 		return (0);
 	init_condition(&condition, argv);
 	init_fork(&condition);
 	init_philo(&condition);
 	simulation(&condition);
+	while (i < condition.num_of_philos)
+	{
+		printf("philo %d eaten times %d: \n", (i + 1), condition.philo[i].meals_eaten);
+		i++;
+	}
 	return (0);
 }
 

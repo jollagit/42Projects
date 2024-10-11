@@ -13,7 +13,7 @@ typedef struct  s_philo
 {
 	pthread_t			thread;
 	int					id;
-	size_t				last_meal; // long long ??
+	size_t				last_meal;
 	int					meals_eaten;
 	struct s_fork		*left_fork;
 	struct s_fork		*right_fork;
@@ -48,7 +48,7 @@ typedef struct s_condition
 size_t	get_time();
 int		ft_atoi(const char *str);
 int		check_death(t_condition *condition);
-int	check_meals_eaten(t_condition *condition);
+void	check_meals_eaten(void *args);
 void	init_philo(t_condition *condition);
 void	init_fork(t_condition *condition);
 void	init_condition(t_condition *condition, char **argv);

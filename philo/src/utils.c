@@ -16,20 +16,13 @@ int		check_death(t_condition *condition)
 		pthread_mutex_unlock(&condition->check_death);
 		return (1);
 	}
+	else if (condition->ate_all == condition->num_of_philos)
+	{
+		pthread_mutex_unlock(&condition->check_death);
+		return (1);
+	}
 	pthread_mutex_unlock(&condition->check_death);
 	return (0);
-}
-
-int	check_meals_eaten(void *args)
-{
-	t_philo		*philo;
-	t_condition	*condition;
-
-	philo = (t_philo *)args;
-	condition = philo->condition;
-	if (philo->meals_eaten == condition->num_time_to_eat)
-		return (0);
-	return (1);
 }
 
 int		ft_atoi(const char *str)

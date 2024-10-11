@@ -20,7 +20,7 @@ void	init_fork(t_condition *condition)
 	int		i;
 
 	i = 0;
-	condition->fork = malloc (condition->num_of_philos * sizeof(t_fork)); // forse meglio allocare uno a uno
+	condition->fork = malloc (condition->num_of_philos * sizeof(t_fork));
 	if (!condition->fork) // aggiungi gestione errori 
 		return ;
 	while (i < condition->num_of_philos) 
