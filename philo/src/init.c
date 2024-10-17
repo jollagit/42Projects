@@ -15,49 +15,36 @@ void	init_condition(t_condition *condition, char **argv)
 	pthread_mutex_init(&condition->check_death, NULL);
 	condition->died = 0;
 	condition->ate_all = 0;
-	condition->fork = malloc (sizeof(t_fork));
-	condition->fork = init_fork(condition->num_of_philos, condition->fork);
+	init_fork(condition);
 }
 
-t_fork	*init_fork(int nphilo, t_fork *fork)
+void	init_fork(t_condition *condition)
 {
 	int		i;
-	t_fork	*first;
-	t_fork	*current;
-	
-	i = 1;
-	pthread_mutex_init(&fork->mutex, NULL);
-	first = fork;
-	while (i < nphilo) 
+
+	i = 0;
+	while (i < condition->num_of_philos)
 	{
-		fork->id = i;
-		current = malloc (1 * sizeof(t_fork));
-		pthread_mutex_init(&current->mutex, NULL);
-		fork->next = current;
-		fork = fork->next;
+		condition->fork[i].id = i + 1;
+		pthread_mutex_init(&condition->fork[i].mutex, NULL);
 		i++;
 	}
-	fork->next = first;
-	fork = first;
-	return first;
 }
 
 void	init_philo(t_condition *condition)
 {
 	int		i;
-	t_fork	*current;
 
 	i = 0;
-	current = condition->fork;
 	while (i < condition->num_of_philos)
 	{
 		condition->philo[i].id = i + 1;
 		condition->philo[i].condition = condition;
 		condition->philo[i].last_meal = get_time();
 		condition->philo[i].meals_eaten = 0;
-		condition->philo[i].left_fork = current;
-		condition->philo[i].right_fork = current->next;
-		current = current->next;
+		condition->philo[i].left_fork = &condition->fork[i];
+		condition->philo[i].right_fork = &condition->fork[(i + 1) % condition->num_of_philos];
 		i++;
 	}
 }
+

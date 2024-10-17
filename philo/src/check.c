@@ -9,13 +9,16 @@ int		check_all(t_condition *condition)
 		return (0);
 	}
 	pthread_mutex_unlock(&condition->check_death);
-	pthread_mutex_lock(&condition->eating_mutex);
-	if (condition->ate_all == condition->num_of_philos)
+	if (condition->num_of_philos != 1)
 	{
+		pthread_mutex_lock(&condition->eating_mutex);
+		if (condition->ate_all == condition->num_of_philos)
+		{
+			pthread_mutex_unlock(&condition->eating_mutex);
+			return (0);
+		}
 		pthread_mutex_unlock(&condition->eating_mutex);
-		return (0);
 	}
-	pthread_mutex_unlock(&condition->eating_mutex);
 	return (1);
 }
 

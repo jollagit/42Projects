@@ -1,6 +1,6 @@
 NAME		:= philo
 CC			:= gcc -g
-CFLAGS		:= -Werror -Wextra -Wall -pthread -I./include
+CFLAGS		:= -Werror -Wextra -Wall -I./include
 RM			:= rm -rf
 SRC_DIR		:= src
 BUILD_DIR	:= .build
@@ -12,14 +12,13 @@ SRCS		:= $(SRC_DIR)/philo.c \
 				$(SRC_DIR)/check.c
 
 
-
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 
 all : header $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(LDFLAGS) $^ -o $@ && echo "${BOLD}${GREEN}Done!${NO_COLOR}" \
+	$(CC) $(LDFLAGS) $^ -o $@ -lpthread && echo "${BOLD}${GREEN}Done!${NO_COLOR}" \
 	|| echo "${BOLD}${RED}Error compiling $(C_NAME)${NO_COLOR}";
 
 

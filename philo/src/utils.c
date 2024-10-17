@@ -10,23 +10,16 @@ size_t	get_time()
 
 void	free_mutex(t_condition *condition)
 {
-	t_fork *current;
-	t_fork	*next;
-	t_fork	*first;
+	int		i;
 
-	current = condition->fork;
-	first = condition->fork;
-	do
+	i = 0;
+	while (i < condition->num_of_philos)
 	{
-		next = current->next;
-		pthread_mutex_destroy(&current->mutex);
-		free(current);
-		current = next;
+		pthread_mutex_destroy(&condition->fork[i].mutex);
+		i++;
 	}
-	while (current != first);
 	pthread_mutex_destroy(&condition->eating_mutex);
 	pthread_mutex_destroy(&condition->check_death);
-	free(condition);
 }
 
 int		ft_atoi(const char *str)

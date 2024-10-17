@@ -7,9 +7,12 @@ static int	eating(t_philo *philo)
 	condition = philo->condition;
 	if (condition->num_of_philos != 1)
 	{
+		pthread_mutex_lock(&philo->left_fork->mutex);
 		if (!check_all(condition))
+		{
+			pthread_mutex_unlock(&philo->left_fork->mutex);
 			return (0);
-		pthread_mutex_lock(&philo->left_fork->mutex); // controlla se effettivamente le forchette di sinistra e destra sono giuste perche i thred si sovrappogono nei lovk delle fork
+		}
 		printf("%ldms philo %d has taken a fork \n", get_time() - condition->init_time, philo->id);
 		if (!check_all(condition))
 		{
@@ -18,24 +21,6 @@ static int	eating(t_philo *philo)
 		}
 		pthread_mutex_lock(&philo->right_fork->mutex);
 		printf("%ldms philo %d is eating \n", get_time() - condition->init_time, philo->id);
-
-	// if (philo->left_fork < philo->right_fork)
-	// {
-	// 	pthread_mutex_lock(&philo->left_fork->mutex);
-	// 	printf("%ldms philo %d has taken the left fork\n", get_time() - condition->init_time, philo->id);
-	// 	pthread_mutex_lock(&philo->right_fork->mutex);
-	// 	printf("%ldms philo %d has taken the right fork\n", get_time() - condition->init_time, philo->id);
-	// }
-	// else
-	// {
-	// 	pthread_mutex_lock(&philo->right_fork->mutex);
-	// 	printf("%ldms philo %d has taken the right fork\n", get_time() - condition->init_time, philo->id);
-	// 	pthread_mutex_lock(&philo->left_fork->mutex);
-	// 	printf("%ldms philo %d has taken the left fork\n", get_time() - condition->init_time, philo->id);
-	// }
-
-		// questo per gestire l'acquisizione delle fork nel caso tu voglia continuare con questa inizializzazione di left e right
-
 		pthread_mutex_lock(&condition->check_death);
 		philo->last_meal = get_time();
 		pthread_mutex_unlock(&condition->check_death);
@@ -58,19 +43,23 @@ static void	*routine(void *args)
 	condition = philo->condition;
 	while (1)
 	{
+		usleep(1);
 		if (!check_all(condition))
 			return (NULL);
-		printf("%ldms philo %d is thinking \n", get_time() - condition->init_time, philo->id);
-		if (!eating(philo))
-			return (NULL);
-		pthread_mutex_lock(&condition->eating_mutex);
-		if (condition->num_time_to_eat != 0 && philo->meals_eaten == condition->num_time_to_eat)
-			condition->ate_all++;
-		pthread_mutex_unlock(&condition->eating_mutex);
-		if (!check_all(condition))
-			return (NULL);
-		printf("%ldms philo %d is sleeping \n", get_time() - condition->init_time, philo->id);
-		usleep(condition->time_to_sleep * 1000);
+		if (condition->num_of_philos != 1)
+		{
+			printf("%ldms philo %d is thinking \n", get_time() - condition->init_time, philo->id);
+			if (!eating(philo))
+				return (NULL);
+			pthread_mutex_lock(&condition->eating_mutex);
+			if (condition->num_time_to_eat != 0 && philo->meals_eaten == condition->num_time_to_eat)
+				condition->ate_all++;
+			pthread_mutex_unlock(&condition->eating_mutex);
+			if (!check_all(condition))
+				return (NULL);
+			printf("%ldms philo %d is sleeping \n", get_time() - condition->init_time, philo->id);
+			usleep(condition->time_to_sleep * 1000);
+		}
 	}
 	return (NULL);
 }
@@ -83,6 +72,7 @@ static void	*simulation_check(void *args)
 	condition = (t_condition *)args;
 	while (1)
 	{
+		usleep(1);
 		i = 0;
 		while (i < condition->num_of_philos)
 		{
@@ -124,17 +114,14 @@ static void	simulation(t_condition *condition)
 
 int	main(int argc, char *argv[])
 {
-	t_condition	*condition;
+	t_condition	condition;
 
 	if (argc < 5)
 		return (0);
-	condition = malloc (sizeof(t_condition));
-	init_condition(condition, argv);
-	init_philo(condition);
-	simulation(condition);
-	free_mutex(condition);
+	init_condition(&condition, argv);
+	init_philo(&condition);
+	simulation(&condition);
+	free_mutex(&condition);
 	return (0);
 }
-
-
 
