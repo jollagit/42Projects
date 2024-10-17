@@ -23,7 +23,9 @@ typedef struct  s_philo
 
 typedef struct	s_fork
 {
+	int					id;
 	pthread_mutex_t		mutex;
+	struct s_fork		*next;
 }	t_fork;
 
 typedef struct s_condition
@@ -47,10 +49,12 @@ typedef struct s_condition
 
 size_t	get_time();
 int		ft_atoi(const char *str);
-int		check_death(t_condition *condition);
-void	check_meals_eaten(void *args);
 void	init_philo(t_condition *condition);
-void	init_fork(t_condition *condition);
+void	free_mutex(t_condition *condition);
+int		check_all(t_condition *condition);
+t_fork	*init_fork(int nphilo, t_fork *fork);
+int		check_death(int i, t_condition *condition);
+//int		eat(t_philo *philo, t_condition *condition);
 void	init_condition(t_condition *condition, char **argv);
 
 #endif

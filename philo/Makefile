@@ -8,7 +8,9 @@ DIR_DUP		:= mkdir -p $(@D)
 
 SRCS		:= $(SRC_DIR)/philo.c \
 				$(SRC_DIR)/utils.c \
-				$(SRC_DIR)/init.c
+				$(SRC_DIR)/init.c \
+				$(SRC_DIR)/check.c
+
 
 
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
