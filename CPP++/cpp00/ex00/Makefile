@@ -14,3 +14,5 @@ clean:
 		rm -f $(NAME)
 
 re: clean all
+
+.PHONY: re clean all
