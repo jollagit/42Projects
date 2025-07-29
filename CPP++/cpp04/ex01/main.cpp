@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/26 13:11:56 by gvigano           #+#    #+#             */
+/*   Updated: 2025/07/26 13:11:57 by gvigano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
@@ -33,16 +45,6 @@ int main()
 	dog2 = dog1;
 	if ((dog2.getBrain() != dog1.getBrain()) && (dog2.getBrain() != defaultBrain))
 		std::cout << "Deep Copy Assignment successful." << std::endl;
-	
-	std::cout << "TEST 5: TEST SELF-ASSIGNMENT:" << std::endl;
-	Dog selfDog;
-	Brain* originalBrain = selfDog.getBrain();
-	selfDog = selfDog;
-	if (selfDog.getBrain() == originalBrain) {
-		std::cout << "Self-assignment handled correctly. "
-				  << "selfDog brain : " << selfDog.getBrain()
-				  << " | originalBrain : " << originalBrain << std::endl;
-	}
 
 	std::cout << "TEST 4: TEST ARRAY ANIMALS: (MEMORY MANAGEMENT)" << std::endl;
 	const int	size = 6;

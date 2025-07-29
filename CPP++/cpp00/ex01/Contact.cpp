@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/26 10:31:46 by gvigano           #+#    #+#             */
+/*   Updated: 2025/07/26 11:07:46 by gvigano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
 #include <iostream>
 #include <iomanip>
@@ -13,35 +25,50 @@ void 	Contact::getData() {
 	std::string input;
 
 	std::cout << "Enter first name: ";
-	std::getline(std::cin, input);
+	if (!std::getline(std::cin, input)) {
+		std::cout << "\nEOF detected" << std::endl;
+		exit (0);
+	}
 	while (input.empty()){
 		std::cout << "First name cannot be empty. Try again: ";
 		std::getline(std::cin, input);
 	}
 	this->firstName = input;
 	std::cout << "Enter last name: ";
-	std::getline(std::cin, input);
+	if (!std::getline(std::cin, input)) {
+		std::cout << "\nEOF detected" << std::endl;
+		exit(0);
+	}
 	while (input.empty()){
 		std::cout << "Last name cannot be empty. Try again: ";
 		std::getline(std::cin, input);
 	}
 	this->lastName = input;
 	std::cout << "Enter nickname: ";
-	std::getline(std::cin, input);
+	if (!std::getline(std::cin, input)) {
+		std::cout << "\nEOF detected" << std::endl;
+		exit(0);
+	}
 	while (input.empty()){
 		std::cout << "Nickname cannot be empty. Try again: ";
 		std::getline(std::cin, input);
 	}
 	this->nickName = input;
 	std::cout << "Enter phone number: ";
-	std::getline(std::cin, input);
+	if (!std::getline(std::cin, input)) {
+		std::cout << "\nEOF detected" << std::endl;
+		exit(0);
+	}
 	while (input.empty()){
 		std::cout << "Phone number cannot be empty. Try again: ";
 		std::getline(std::cin, input);
 	}
 	this->phoneNumber = input;
 	std::cout << "Enter darkest secret: ";
-	std::getline(std::cin, input);
+	if (!std::getline(std::cin, input)) {
+		std::cout << "\nEOF detected" << std::endl;
+		exit(0);
+	}
 	while (input.empty()){
 		std::cout << "Darkest secret cannot be empty. Try again: ";
 		std::getline(std::cin, input);

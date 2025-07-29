@@ -1,10 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Account.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/26 10:38:29 by gvigano           #+#    #+#             */
+/*   Updated: 2025/07/26 10:49:43 by gvigano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Account.hpp"
 #include <iostream>
 #include <iomanip>
 #include <ctime>
 
-/*class variables, shared by all objects,
-to keep global track of accounts*/
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;

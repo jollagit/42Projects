@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gvigano <gvigano@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/26 11:31:27 by gvigano           #+#    #+#             */
+/*   Updated: 2025/07/26 11:42:18 by gvigano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Harl.hpp"
 
 void	Harl::debug(void) {
@@ -35,5 +47,5 @@ void	Harl::complain(std::string level) {
 			return;
 		}
 	}
-	std::cout << "Unrecognized level." << std::endl;
+	std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 }
